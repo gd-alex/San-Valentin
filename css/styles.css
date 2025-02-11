@@ -1,0 +1,621 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+
+*{
+    box-sizing: border-box;
+}
+
+html{
+    scroll-behavior: smooth;
+}
+
+body{
+    margin: 0;
+}
+
+/* tipografia */
+
+h1,h2,h3,h4,h5,h6,p{
+    margin: 0;
+}
+
+.h1-bold{
+    font-family: "Montserrat", sans-serif;
+    font-weight: 700;
+    font-size: 3rem;
+    font-style: normal;
+}
+.h1-medium{
+    font-family: "Montserrat", sans-serif;
+    font-weight: 500;
+    font-size: 3rem;
+    font-style: normal;
+}
+.h2-bold{
+    font-family: "Montserrat", sans-serif;
+    font-weight: 700;
+    font-size: 2.5rem;
+    font-style: normal;
+}
+.h2-medium{
+    font-family: "Montserrat", sans-serif;
+    font-weight: 500;
+    font-size: 2.5rem;
+    font-style: normal;
+}
+.h3-bold{
+    font-family: "Montserrat", sans-serif;
+    font-weight: 700;
+    font-size: 2rem;
+    font-style: normal;
+}
+.h3-medium{
+    font-family: "Montserrat", sans-serif;
+    font-weight: 500;
+    font-size: 2rem;
+    font-style: normal;
+}
+.h4-bold{
+    font-family: "Montserrat", sans-serif;
+    font-weight: 700;
+    font-size: 1.5rem;
+    font-style: normal;
+}
+.h4-medium{
+    font-family: "Montserrat", sans-serif;
+    font-weight: 500;
+    font-size: 1.5rem;
+    font-style: normal;
+}
+
+.text-smbold{
+    font-family: "Montserrat", sans-serif;
+    font-weight: 600;
+    font-size: 1rem;
+    font-style: normal;   
+}
+
+.text-regular{
+    font-family: "Montserrat", sans-serif;
+    font-weight: 400;
+    font-size: 1rem;
+    font-style: normal;
+}
+
+.enfasis{
+    font-weight: 600;
+}
+
+a{
+    text-decoration: none;
+    color: currentColor;
+}
+
+section{
+    z-index: 1;
+}
+
+
+:root{
+
+    /* colores */
+
+    --main-color-rojo-super-suave: #ecdce1;
+    --main-color-rojo-suave: #eed4db;
+    --main-color-rojo-claro: #dfb9c3;
+    --main-color-rojo: #6b2135;
+    --main-color-rojo-oscuro: #350713;
+    
+    --main-color-gris-oscuro: #333333;
+    --main-color-blanco: #f1f1f1;
+
+    /* radius */
+
+    --radius: 24px;
+}
+
+/* generales */
+
+.btn-red{
+    width: fit-content;
+    background-color: var(--main-color-rojo-suave);
+    height: fit-content;
+    padding: .5rem 1rem;
+    border-radius: .5rem;
+    color: var(--main-color-rojo-oscuro);
+
+    transition: .5s ease;
+}
+
+.btn-red:hover{
+    color: var(--main-color-rojo);
+}
+
+.shadow-red{
+    box-shadow: 0 0 6px var(--main-color-rojo-suave);
+}
+
+.intermitente{
+    animation-name: intermitente;
+    animation-duration: 1.5s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+    animation-direction: alternate;
+}
+
+.section-100vh{
+    height: 100vh;
+    min-height: 100vh;
+}
+
+.section-min-100vh{
+    min-height: 100vh;
+}
+
+.container{
+    padding: 10% 10% 15% 10%;
+}
+
+/* texto */
+
+.rojo-suave{
+    color: var(--main-color-rojo-suave);
+}
+.rojo{
+    color: var(--main-color-rojo);
+}
+.rojo-claro{
+    color: var(--main-color-rojo-claro);
+}
+
+.rojo-oscuro{
+    color: var(--main-color-rojo-oscuro);
+}
+
+@keyframes intermitente{
+    100%,75%{
+        opacity: 1;
+    }
+
+    0%{
+        opacity: 0.2;
+    }
+}
+
+/* cargando  */
+
+
+.cargando{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    flex-direction: column;
+    background-color: var(--main-color-rojo-claro);
+    position: absolute;
+    z-index: 2000;
+}
+
+.barra, .barra::after{
+    width: 160px;
+    height: 10px;
+    background-color: var(--main-color-rojo-suave);
+    border-radius: 500px;
+    position: relative;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.barra::after{
+    content: "";
+    border-radius: 0%;
+    background-color: var(--main-color-rojo);
+    position: absolute;
+    box-sizing: border-box;
+    left: -160px;
+}
+
+.carga::after{
+    animation: barra-carga 5s ease-in-out;
+    animation-fill-mode: forwards;
+}
+
+@keyframes barra-carga{
+    0%{
+        transform: translateX(0%);
+    }
+    30%, 50%{
+        transform: translateX(30%);
+    }
+    65%, 85%{
+        transform: translateX(65%);
+    }
+
+    100%{
+        transform: translateX(100%);;
+    }
+}
+
+
+.cargando-title{
+    color: var(--main-color-gris-oscuro);
+}
+
+.boton-empezar{
+    opacity: 0;
+
+    animation-name: appear;
+    animation-duration: 5s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes appear{
+    0%,99%{
+        opacity: 0;
+    }
+
+    100%{
+        opacity: 1;
+    }
+}
+
+
+/*  */
+
+#hero{
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--main-color-rojo-claro);
+}
+
+.container-hero{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: .5rem;
+
+    width: 370px;
+}
+
+.title{
+    color: var(--main-color-rojo-oscuro);
+    font-size: 3rem;
+    font-weight: 700;
+    text-align: center;
+}
+
+.bajada, .bajada-2{
+    color: var(--main-color-rojo);
+    text-align: center;
+}
+
+
+/* bienvenida */
+
+#bienvenida{
+    background-color: var(--main-color-rojo-suave);
+}
+
+.container-bienvenida{
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+.flor{
+    aspect-ratio: 1/1;
+    width: 400px;
+    position: absolute;
+    bottom: -25%;
+    
+    animation-name: spin;
+    animation-timeline: view();
+}
+
+@keyframes spin{
+    from{
+        transform: rotate(0deg);
+    }
+
+    to{
+        transform: rotate(180deg);
+    }
+}
+
+
+.container-numeros{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+.dato{
+    text-align: center;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.cifra{
+    display: flex;
+}
+
+.palabra{
+    color: var(--main-color-rojo);
+}
+
+/* contador */
+
+#contador-inf{
+    background-color: var(--main-color-rojo-super-suave);
+}
+
+.container-contador-inf{
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+.container-datos{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+.infinito{
+    background-image: url("../imagenes/infinito.png");
+    background-position: center center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 100px;
+    height: 75px;
+}
+
+#tiempo{
+    background-color: var(--main-color-rojo-suave);
+}
+
+.container-datos2{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+#inicio-camino{
+    background-color: var(--main-color-rojo-super-suave);
+}
+
+.fotos{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-auto-rows: 300px;
+    gap: 24px;
+}
+
+.fotos img{
+    width: 100%;
+    height: 100%;
+    border-radius: var(--radius);
+    object-fit: cover;
+}
+
+.primeros, .segundos, .terceros{
+    animation-name: showw;
+}
+
+.primeros, .terceros{
+    animation-fill-mode: both;
+    animation-timeline: view(20% 0%);
+}
+
+.segundos{
+    animation-fill-mode: both;
+    animation-timeline: view(40% 55%);
+}
+
+@keyframes showw{
+    from{
+        opacity: 0;
+    }
+
+    to{
+        opacity: 1;
+    }
+}
+
+.top{
+    object-position: center -72px;
+}
+
+.column-4{
+    grid-column: span 4;
+}
+.column-2{
+    grid-column: span 2;
+}
+
+
+.row-2{
+    grid-row: span 2;
+}
+
+.photo{
+    width: 100%;
+}
+
+/*  */
+
+#final-camino{
+    background-color: var(--main-color-rojo-suave);
+}
+
+/*  */
+
+#palabras{
+    background-color: var(--main-color-rojo-super-suave);
+}
+
+.container-palabras{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.emojiduda{
+    margin: 0 auto;
+    aspect-ratio: 1/1;
+    width: 500px;
+}
+
+/*  */
+
+#pregunta{
+    background-color: var(--main-color-rojo-suave);
+}
+
+.container-pregunta{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    height: 100%;
+}
+
+.givearose{
+    width: 500px;
+    margin: 0 auto;
+}
+
+.imagen-rose{
+    margin: 48px 0 0 0;
+    display: flex;
+    justify-content: center;
+}
+
+.antetitulo, .pregunta{
+    animation-name: showw;
+    animation-timeline: view();
+}
+
+/* mediaqueries */
+
+@media screen and (max-width: 957px){
+    .container-bienvenida{
+        padding: 20% 10% 10% 10%;
+    }
+    .container-numeros, .container-datos{
+        grid-template-columns: 1fr 1fr;
+        grid-row-gap: 2rem;
+    }
+    .top{
+        object-position: center 0px;
+    }
+}
+
+@media screen and (max-width: 617px){
+    .titulo-bienvenida{
+        margin-top: 100px;
+    }
+    .flor{
+        width: 350px;
+    }
+    .container-datos2{
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+    }
+    .column-2-semanas{
+        grid-column: span 2;
+    }
+    
+    .primeros{
+        grid-column: span 6;
+        grid-row: span 1;
+    }
+
+    .segundos, .terceros{
+        grid-row: span 1;
+        grid-column: span 3;
+    }
+
+    .container-palabras .titulo-palabras, .h2-medium{
+        font-size: 2rem;
+    }
+    .container-palabras .subtitulo-palabras, .h4-bold{
+        font-size: 1.2rem;
+    }
+
+    .emojiduda{
+        width: 75%;
+    }
+
+    .antetitulo{
+        font-size: 2rem;
+    }
+    .pregunta{
+        font-size: 2.5rem;
+        text-align: center;
+    }
+    .givearose{
+        width: 80%;
+    }
+}
+
+@media screen and (max-width: 450px){
+    .container-hero{
+        width: 70%;
+    }
+    .flor{
+        width: 280px;
+    }
+
+    .fotos{
+        grid-auto-rows: 175px;
+    }
+    .primeros{
+        grid-row: span 2;
+    }
+    .segundos, .terceros{
+        grid-row: span 1;
+        grid-column: span 3;
+    }
+
+    .container-palabras .titulo-palabras, .h2-medium{
+        font-size: 1.5rem;
+    }
+    .container-palabras .subtitulo-palabras, .h4-bold{
+        font-size: 1.2rem;
+    }
+
+    .container-numeros, .container-datos, .container-datos2{
+        grid-template-columns: 1fr;
+        grid-row-gap: 2rem;
+    }
+
+    .column-2-semanas{
+        grid-column: span 1;
+    }
+
+
+    .antetitulo{
+        font-size: 1.5rem;
+    }
+    .pregunta{
+        font-size: 2rem;
+    }
+
+    .section-100vh{
+        height: 125vh;
+    }
+
+    #tiempo{
+        height: 100vh;
+    }
+}
